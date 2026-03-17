@@ -45,22 +45,7 @@ docker run --rm -it \
 
 If audio or display permissions are restricted on your system, adjust your host setup (for example `xhost +local:` for X11).
 
-## Smoke test without a display
-
-You can validate the binary starts in headless mode (it should then fail only if `CLAW.REZ` is not present):
-
-```bash
-SDL_VIDEODRIVER=dummy SDL_AUDIODRIVER=dummy SDL_RENDER_DRIVER=software ./openclaw
-```
-
-Expected failure without assets:
-
-```text
-ERROR: [VOpen] Could not load Rez archive: CLAW.REZ
-```
-
 ## Notes
 
-- Docker CLI is not available in this execution environment, so `docker build` was not run here.
-- OpenClaw was compiled and executed directly in this environment using SDL dummy drivers; startup succeeds until asset loading.
+- This environment could not validate `docker build` directly because Docker CLI is unavailable.
 - The container entrypoint runs `/opt/openclaw/openclaw`.
